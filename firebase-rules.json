@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "chuletada": {
+      ".read": true,
+      ".write": true
+    }
+  }
+}
