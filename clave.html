@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Generar clave del cajero</title>
+<style>body{font-family:system-ui,Arial,sans-serif;max-width:560px;margin:30px auto;padding:0 14px;color:#2a1a10;background:#fff8f0}
+input,button{font:inherit;padding:11px;width:100%;margin:6px 0;border:1px solid #e8d9c8;border-radius:10px}
+button{background:#c2410c;color:#fff;font-weight:700;cursor:pointer}code{display:block;word-break:break-all;background:#fff;border:1px solid #e8d9c8;border-radius:10px;padding:10px}</style></head>
+<body><h2>🔑 Clave del cajero</h2>
+<p>Escribe la clave que quieres usar. Te daré un código para pegar en <b>config.js</b> (la clave en sí no se guarda en ningún lado).</p>
+<input id="c" type="text" placeholder="Ej: chuleta2026" autocomplete="off">
+<button id="b">Generar código</button>
+<code id="o">—</code>
+<p id="m"></p>
+<script>
+async function hash(t){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("chuletada-clave|"+t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");}
+document.getElementById("b").onclick=async()=>{const v=document.getElementById("c").value;
+ if(!v){document.getElementById("m").textContent="Escribe una clave.";return;}
+ try{const h=await hash(v);document.getElementById("o").textContent=h;
+  document.getElementById("m").innerHTML='En <b>config.js</b> pon: <b>CLAVE_HASH: "'+h.slice(0,8)+'…"</b> (el código completo de arriba).';}
+ catch(e){document.getElementById("m").textContent="Abre esta página con https (el link de GitHub Pages).";}};
+</script></body></html>

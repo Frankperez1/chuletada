@@ -1,7 +1,7 @@
 // Service worker: deja la página guardada en el celular para abrirla SIN internet.
 // Si cambias archivos del proyecto, sube el número de versión (V).
-const V = "chuletada-v1";
-const ARCHIVOS = ["./", "./index.html", "./styles.css", "./config.js",
+const V = "chuletada-v2";
+const ARCHIVOS = ["./", "./index.html", "./styles.css", "./config.js", "./clave.js",
                   "./api-local.js", "./sync.js", "./app.js"];
 
 self.addEventListener("install", e => {
